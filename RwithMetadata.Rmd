@@ -18,7 +18,7 @@ In the YAML (the red text denoting title, author, etc) under output, enter betwe
 
 We'll write a R chunk that loads the tidyverse package and then read in the Gapminder dataset from the subdirectory of my project. To insert a R chunk, type ctrl + alt + i. 
 
-```{r}
+```{r, message=FALSE}
 library(tidyverse)
 gm <- read_csv("gapminder.csv")
 ```
@@ -28,7 +28,7 @@ gm <- read_csv("gapminder.csv")
 
 Let's take a look at the gm dataset. 
 
-```{r}
+```{r, message=FALSE}
 head(gm)
 ```
 
@@ -39,14 +39,14 @@ We have a tibble with country, continent, year, life expectancy, population, and
 
 Showing GDP/capita on X and life expectancy on Y. Specify the figure caption by typing fig.cap="Title" inside the {}. This is referred to as setting the R chunk caption. 
 
-```{r, fig.cap="Life Expectancy vs GDP"}
+```{r, fig.cap="Life Expectancy vs GDP, echo=FALSE, message=FALSE"}
 ggplot(gm, aes(x=gdpPercap, y=lifeExp)) +
   geom_point()
 ```
 
 
 # A Better Plot
-```{r, fig.cap="Life Expectancy vs GDP, with color"}
+```{r, fig.cap="Life Expectancy vs GDP, with color, echo=FALSE, message=FALSE"}
 ggplot(gm, aes(x=gdpPercap, y=lifeExp)) +
   geom_point(aes(col=continent))+
   scale_x_log10()
@@ -67,7 +67,7 @@ Today, we're most interested in the following:
 
 
 # Changing Dimensions
-```{r, fig.cap="Life Expectancy vs GDP, with color, fig.width=2"}
+```{r, fig.cap="Life Expectancy vs GDP, with color, fig.width=2, echo=FALSE, message=FALSE"}
 ggplot(gm, aes(x=gdpPercap, y=lifeExp)) +
   geom_point(aes(col=continent))+
   scale_x_log10()
@@ -78,12 +78,12 @@ ggplot(gm, aes(x=gdpPercap, y=lifeExp)) +
 
 See some data using head (which is nicely formatted)
 
-```{r}
+```{r, message=FALSE}
 head(gm)
 ```
 
 Now make it into a table.
-```{r}
+```{r, message=FALSE}
 library(knitr)
 kable(head(gm))
 ```
